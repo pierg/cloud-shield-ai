@@ -7,12 +7,13 @@ from cloud_shield_ai import output_folder
 aws = get_aws_manager_instance()
 aws.reset_all()
 
+
 playground = Playground(
     total_num_users=10,
     total_num_roles=10,
     total_num_groups=5,
     total_num_resources=2,
-    path_length=[3, 3],
+    path_length=[3,5],
 )
 
 playground.run()

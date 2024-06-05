@@ -37,12 +37,5 @@ class CloudExplorationCrew:
         )
         
         result = crew.kickoff()
-        return self._generate_report(result)
+        return result
         
-
-    def _generate_report(self, result):
-        # Placeholder function to process and generate a report from the task results
-        report = "Comprehensive Risk Report:\n"
-        for task_result in result:
-            report += f"{task_result}\n"
-        return report

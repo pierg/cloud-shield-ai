@@ -75,7 +75,9 @@ class Resource(Entity):
 class EntityGenerator:
     def __init__(self, num_users: int, num_groups: int, num_roles: int, num_resources: int, num_users_to_resource_paths: int):
         self.users: List[User] = [User(f"{names.get_first_name()}_{_}") for _ in range(num_users - num_users_to_resource_paths)]
-        self.user_to_resources: List[User] = [User(f"{names.get_first_name()}__{_}") for _ in range(num_users_to_resource_paths)]
+        # self.user_to_resources: List[User] = [User(f"{names.get_first_name()}__{_}") for _ in range(num_users_to_resource_paths)]
+        # TODO: changed for easy reproducibility
+        self.user_to_resources: List[User] = [User(f"Alice__{_}") for _ in range(num_users_to_resource_paths)]
         self.groups: List[Group] = [Group(f"Group{names.get_last_name()}") for _ in range(num_groups)]
         self.roles: List[Role] = [Role(f"Role{str(i)}") for i in range(num_roles)]
         self.resources: List[Resource] = [Resource(f"s3-bucket-{str(i)}") for i in range(num_resources)]
