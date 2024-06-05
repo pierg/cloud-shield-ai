@@ -4,7 +4,14 @@ from cloud_shield_ai import output_folder
 
 # File to create synthetic data to populate aws cloud
 
+
+# aws_access_key_id = "test",
+# aws_secret_access_key = "test",
+# endpoint_url = "http://localhost:4566",
+# region_name = "us-east-1",
+
 aws = get_aws_manager_instance()
+
 aws.reset_all()
 
 

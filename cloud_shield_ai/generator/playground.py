@@ -268,19 +268,20 @@ class Playground:
         report.append("Users:\n")
         for user in self.entity_generator.users:
             report.append(user.generate_trace())
-        report.append("\nGroups:\n")
-        for group in self.entity_generator.groups:
-            report.append(group.generate_trace())
-        report.append("\nRoles:\n")
-        for role in self.entity_generator.roles:
-            report.append(role.generate_trace())
         report.append("\nResources:\n")
         for resource in self.entity_generator.resources:
             report.append(resource.generate_trace())
         report.append("\nUser to Resource Paths:\n")
         for user in self.entity_generator.user_to_resources:
             report.append(user.generate_trace())
+        report.append("\nGroups:\n")
+        for group in self.entity_generator.groups:
+            report.append(group.generate_trace())
+        report.append("\nRoles:\n")
+        for role in self.entity_generator.roles:
+            report.append(role.generate_trace())
         return ''.join(report)
+
     
     def user_to_resource_path(self) -> str:
         """Generate a comprehensive report of the entity trees."""

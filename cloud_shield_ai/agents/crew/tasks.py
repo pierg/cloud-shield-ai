@@ -91,7 +91,6 @@ class CloudExplorationTasks:
                 upload_to_s3,
                 
                 # Utility Tools
-                report_tool,
                 bucket_name_generator
             ]
         )
