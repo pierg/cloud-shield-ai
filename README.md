@@ -55,7 +55,7 @@ CloudShieldAI leverages the power of LLM agents to autonomously identify and exp
     ```
 3. Analyze and exploit it:
     ```console
-    $ python 1_analyze_and_exploit.py
+    $ python 1_explore_and_exploit.py
     ```
     
 
