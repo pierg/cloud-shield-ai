@@ -23,23 +23,23 @@ time.sleep(3)
 # Define different playground configurations
 playground_configs = {
     "small": {
-        "total_num_users": 3,
-        "total_num_roles": 2,
+        "total_num_users": 10,
+        "total_num_roles": 4,
         "total_num_groups": 1,
         "total_num_resources": 1,
-        "path_length": [2, 3],
+        "path_length": [3, 3],
     },
     "large": {
         "total_num_users": 100,
         "total_num_roles": 40,
         "total_num_groups": 20,
         "total_num_resources": 1,
-        "path_length": [7, 8],
+        "path_length": [5, 5],
     }
 }
 
 # Select the desired playground configuration
-selected_config = "small"
+selected_config = "large"
 
 # Create playground with selected configuration
 playground = Playground(**playground_configs[selected_config])
