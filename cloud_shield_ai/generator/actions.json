@@ -1,0 +1,74 @@
+{
+    "resource-specific": {
+        "s3:ListBucket": {
+            "source": ["user", "role", "group"],
+            "destination": ["s3"]
+        },
+        "s3:GetObject": {
+            "source": ["user", "role", "group"],
+            "destination": ["s3"]
+        },
+        "s3:CreateBucket": {
+            "source": ["user", "role", "group"],
+            "destination": ["s3"]
+        },
+        "s3:PutObject": {
+            "source": ["user", "role", "group"],
+            "destination": ["s3"]
+        },
+        "s3:PutBucketAcl": {
+            "source": ["user", "role", "group"],
+            "destination": ["s3"]
+        }
+    },
+    "non-resource-specific": {
+        "sts:AssumeRole": {
+            "source": ["user", "role", "group"],
+            "destination": ["role"]
+        },
+        "iam:ListUsers": {
+            "source": ["user", "role", "group"],
+            "destination": ["user"]
+        },
+        "iam:ListRoles": {
+            "source": ["user", "role", "group"],
+            "destination": ["role"]
+        },
+        "iam:ListGroups": {
+            "source": ["user", "role", "group"],
+            "destination": ["group"]
+        },
+        "iam:ListAttachedUserPolicies": {
+            "source": ["user", "role", "group"],
+            "destination": ["user"]
+        },
+        "iam:ListAttachedRolePolicies": {
+            "source": ["user", "role", "group"],
+            "destination": ["role"]
+        },
+        "iam:ListAttachedGroupPolicies": {
+            "source": ["user", "role", "group"],
+            "destination": ["group"]
+        },
+        "iam:GetPolicyVersion": {
+            "source": ["user", "role", "group"],
+            "destination": ["policy"]
+        },
+        "iam:GetUser": {
+            "source": ["user", "role", "group"],
+            "destination": ["user"]
+        },
+        "iam:CreateUser": {
+            "source": ["user", "role", "group"],
+            "destination": ["user"]
+        },
+        "iam:AttachUserPolicy": {
+            "source": ["user", "role", "group"],
+            "destination": ["user"]
+        },
+        "iam:CreateRole": {
+            "source": ["user", "role", "group"],
+            "destination": ["role"]
+        }
+    }
+}
