@@ -42,6 +42,7 @@ upload_to_s3 = UploadToS3Action(description="Uploads data to an S3 bucket.")
 random_name_generator = RandomNameGeneratorTool(description="Generates a random first name.")
 bucket_name_generator = BucketNameGeneratorTool(description="Generates a unique valid S3 bucket name.")
 report_tool = CompileReportTool(description="Compiles the exploration results into a report.")
+encryption_tool = EncryptionUtility(description="Utility for generating key, encrypting, and decrypting data.")
 
 
 
@@ -74,5 +75,6 @@ all_tools = [
     upload_to_s3,
     
     # Utility Tools
-    report_tool
+    report_tool,
+    encryption_tool
 ]

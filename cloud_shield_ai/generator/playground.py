@@ -78,7 +78,7 @@ class EntityGenerator:
         # self.user_to_resources: List[User] = [User(f"{names.get_first_name()}__{_}") for _ in range(num_users_to_resource_paths)]
         # TODO: changed for easy reproducibility
         self.user_to_resources: List[User] = [User(f"Alice__{_}") for _ in range(num_users_to_resource_paths)]
-        self.groups: List[Group] = [Group(f"Group{names.get_last_name()}") for _ in range(num_groups)]
+        self.groups: List[Group] = [Group(f"Group{names.get_last_name()}_{_}") for _ in range(num_groups)]
         self.roles: List[Role] = [Role(f"Role{str(i)}") for i in range(num_roles)]
         self.resources: List[Resource] = [Resource(f"s3-bucket-{str(i)}") for i in range(num_resources)]
         self.entities: Dict[str, List[Entity]] = {

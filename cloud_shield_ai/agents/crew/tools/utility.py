@@ -2,6 +2,8 @@ import uuid
 import names
 from crewai_tools import BaseTool
 from cloud_shield_ai import logger
+from cryptography.fernet import Fernet
+
 
 class RandomNameGeneratorTool(BaseTool):
     name: str = "RandomNameGenerator"
@@ -37,3 +39,29 @@ class CompileReportTool(BaseTool):
         report = "\n".join(permissions)
         logger.info(f"Compiled report: {report}")
         return report
+    
+    
+
+class EncryptionUtility(BaseTool):
+    name: str = "EncryptionUtility"
+    description: str = "Utility to encrypt the data, generating a key automatically and encrypting the data passed as argument."
+
+    @staticmethod
+    def generate_key() -> bytes:
+        return Fernet.generate_key()
+
+    @staticmethod
+    def encrypt_data(data: bytes, key: bytes) -> bytes:
+        f = Fernet(key)
+        return f.encrypt(data)
+
+    def _run(self, data: str) -> str:
+        try:
+            key = self.generate_key()
+            data_bytes = data.encode('utf-8')
+            encrypted_data = self.encrypt_data(data_bytes, key)
+            logger.info("Data encrypted successfully.")
+            return f"Encryption successful. Decryption key: {key.decode()}"
+        except Exception as e:
+            logger.error(f"Encryption failed: {e}")
+            return "Encryption failed"

@@ -58,6 +58,7 @@ class CloudExplorationTasks:
                 """),
             agent=agent,
             context=context,
+            async_execution=True,
             expected_output=dedent(f"""\
                 A schematic report detailing the steps taken to exfiltrate sensitive data to a public bucket. 
                 Include methods used, challenges faced, and the final outcome.
@@ -96,7 +97,7 @@ class CloudExplorationTasks:
             ]
         )
 
-    def ransomware_exploration_task(self, agent):
+    def ransomware_exploration_task(self, agent, context):
         return Task(
             description=dedent(f"""\
                 Perform a ransomware attack using.
@@ -105,13 +106,14 @@ class CloudExplorationTasks:
             agent=agent,
             expected_output=dedent(f"""\
                 A detailed report on the ransomware attack, including the steps taken to encrypt data in the S3 buckets accessible to the user.
-                The report should also describe any ransom note left and the effectiveness of the attack.
                 """),
+            context=context,
+            async_execution=True,
             tools=[
-                list_s3_buckets,
+                # list_s3_buckets,
                 get_s3_object,
                 put_s3_object,
-                report_tool,
+                encryption_tool,
             ]
         )
         
