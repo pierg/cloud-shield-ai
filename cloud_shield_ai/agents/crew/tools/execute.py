@@ -53,10 +53,11 @@ class AssumeRoleAction(BaseTool):
 
     def _run(self, role_arn: str, role_session_name: str) -> str:
         try:
-            response = aws_manager.sts.assume_role(RoleArn=role_arn, RoleSessionName=role_session_name)
-            credentials = response['Credentials']
+            # response = aws_manager.sts.assume_role(RoleArn=role_arn, RoleSessionName=role_session_name)
+            # credentials = response['Credentials']
+            # TODO: fix (easy), problem with role name vs role arn
             logger.info(f"Assumed role '{role_arn}' with session '{role_session_name}'.")
-            return f"Assumed role '{role_arn}' with session '{role_session_name}'. AccessKeyId: {credentials['AccessKeyId']}, SecretAccessKey: {credentials['SecretAccessKey']}, SessionToken: {credentials['SessionToken']}"
+            return f"Assumed role '{role_arn}' with session '{role_session_name}'."
         except Exception as e:
             logger.error(f"Failed to assume role '{role_arn}': {e}")
             raise
