@@ -17,6 +17,7 @@ class Manager:
         self.agents['document_analysis_agent'] = self.agents_instance.document_analysis_agent()
         self.agents['data_exfiltration_agent'] = self.agents_instance.data_exfiltration_agent()
         # self.agents['ransomware_exploration_agent'] = self.agents_instance.ransomware_exploration_agent()
+        self.agents['summary_and_briefing_agent'] = self.agents_instance.summary_and_briefing_agent()
 
     def create_all_tasks(self, username):
         # Create the lateral exploration task
@@ -41,7 +42,16 @@ class Manager:
         #     self.agents['ransomware_exploration_agent']
         # )
 
-
+        # Create the summary and briefing task, which depends on all previous tasks
+        self.tasks['summary_and_briefing_task'] = self.tasks_instance.summary_and_briefing_task(
+            self.agents['summary_and_briefing_agent'], 
+            context=[
+                self.tasks['lateral_exploration_task'], 
+                self.tasks['document_analysis_task'], 
+                self.tasks['data_exfiltration_task']
+                # self.tasks['ransomware_exploration_task']
+            ]
+        )
 
 
 class CloudExplorationCrew:
@@ -61,20 +71,21 @@ class CloudExplorationCrew:
             self.manager.agents['lateral_exploration_agent'],
             self.manager.agents['document_analysis_agent'],
             self.manager.agents['data_exfiltration_agent'],
-            # self.manager.agents['ransomware_exploration_agent']
+            # self.manager.agents['ransomware_exploration_agent'],
+            self.manager.agents['summary_and_briefing_agent']
         ]
         
         tasks = [
             self.manager.tasks['lateral_exploration_task'],
             self.manager.tasks['document_analysis_task'],
             self.manager.tasks['data_exfiltration_task'],
-            # self.manager.tasks['ransomware_exploration_task']
+            # self.manager.tasks['ransomware_exploration_task'],
+            self.manager.tasks['summary_and_briefing_task']
         ]
         
         crew = Crew(
             agents=agents,
             tasks=tasks,
-            manager_llm=ChatOpenAI(model="gpt-4"),
             verbose=True
         )
         

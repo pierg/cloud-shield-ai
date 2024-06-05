@@ -42,7 +42,6 @@ class CloudExplorationTasks:
             expected_output=dedent(f"""\
                 A list of objects in each bucket with an indication of whether they are sensitive or not.
                 """),
-            output_json=DocumentAnalysisOutput,
             context=context,
             tools=[
                 # S3 Operations
@@ -65,23 +64,23 @@ class CloudExplorationTasks:
                 """),
             tools=[
                 # User Management
-                get_user_roles,
-                get_user_groups,
-                list_iam_users,
-                list_attached_user_policies,
+                # get_user_roles,
+                # get_user_groups,
+                # list_iam_users,
+                # list_attached_user_policies,
                 explore_user_path,
                 
                 # Role Management
                 get_role_s3_access,
                 get_role_assumable_roles,
-                list_iam_roles,
-                list_attached_role_policies,
+                # list_iam_roles,
+                # list_attached_role_policies,
                 assume_role,
                 
                 # Group Management
                 get_group_s3_access,
-                list_iam_groups,
-                list_attached_group_policies,
+                # list_iam_groups,
+                # list_attached_group_policies,
                 
                 # S3 Operations
                 list_s3_buckets,
@@ -114,4 +113,38 @@ class CloudExplorationTasks:
                 put_s3_object,
                 report_tool,
             ]
+        )
+        
+    def summary_and_briefing_task(self, agent, context):
+        return Task(
+            description=dedent(f"""\
+                Compile all the findings, industry analysis, and strategic
+                talking points into a concise, comprehensive briefing document for
+                the meeting.
+                Ensure the briefing is easy to digest and equips the meeting
+                participants with all necessary information and strategies.
+                """),
+            expected_output=dedent("""\
+                A well-structured security briefing document that includes. .... """),
+            context=context,
+            agent=agent
+        )
+
+    def summary_and_briefing_task(self, agent, context):
+        return Task(
+            description=dedent(f"""\
+                Compile all gathered information from previous tasks into a comprehensive security report. 
+                The report should detail all identified vulnerabilities, provide an assessment of the potential risks, 
+                and propose strategic recommendations for mitigating these vulnerabilities.
+                """),
+            expected_output=dedent(f"""\
+                A well-structured security report that includes:
+                - Summary of all findings from the exploration tasks
+                - Detailed assessment of identified vulnerabilities
+                - Potential risks associated with each vulnerability
+                - Strategic recommendations for mitigating the identified vulnerabilities
+                - Actionable steps for improving the overall security posture
+                """),
+            context=context,
+            agent=agent
         )

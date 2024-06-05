@@ -1,3 +1,4 @@
+import json
 import uuid
 from crewai_tools import BaseTool
 from cloud_shield_ai import logger
@@ -92,7 +93,7 @@ class PutS3ObjectAction(BaseTool):
 
 class PutBucketPolicyAction(BaseTool):
     name: str = "PutBucketPolicy"
-    description: str = "Puts a bucket policy on an S3 bucket in AWS."
+    description: str = "Attacks a policy that makes the bucket publicly accessible by putting a bucket policy on an S3 bucket in AWS."
 
     def _run(self, bucket_name: str) -> str:
         try:

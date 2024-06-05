@@ -44,3 +44,16 @@ class CloudExplorationAgents:
             verbose=True,
             allow_delegation=False
         )
+        
+    def summary_and_briefing_agent(self):
+        return Agent(
+            role='Security Report Specialist',
+            goal='Compile all gathered information into a comprehensive security report, including strategies to fix identified vulnerabilities.',
+            backstory=dedent("""\
+                As the Security Report Specialist, you excel at synthesizing complex information into clear and actionable reports.
+                Your expertise lies in analyzing gathered data from various tasks, identifying key vulnerabilities, and proposing strategic remediation plans.
+                You are adept at making technical information accessible and useful for stakeholders at all levels.
+            """),
+            verbose=True,
+            allow_delegation=False
+        )
