@@ -32,7 +32,7 @@ class CloudExplorationTasks:
             ]
         )
 
-    def document_analysis_task(self, agent, username, context):
+    def document_analysis_task(self, agent, username):
         return Task(
             description=dedent(f"""\
                 Analyze the content of each S3 bucket accessible to the user '{username}'
@@ -43,7 +43,6 @@ class CloudExplorationTasks:
                 A list of objects in each bucket with an indication of whether they are sensitive or not.
                 """),
             output_json=DocumentAnalysisOutput,
-            context=context,
             tools=[
                 # S3 Operations
                 list_s3_buckets,
@@ -52,13 +51,12 @@ class CloudExplorationTasks:
             ]
         )
         
-    def data_exfiltration_task(self, agent, username, context):
+    def data_exfiltration_task(self, agent, username):
         return Task(
             description=dedent(f"""\
                 Attempt to exfiltrate all identified sensitive data accessible by the user '{username}' to a public bucket.
                 """),
             agent=agent,
-            context=context,
             expected_output=dedent(f"""\
                 A schematic report detailing the steps taken to exfiltrate sensitive data to a public bucket. 
                 Include methods used, challenges faced, and the final outcome.

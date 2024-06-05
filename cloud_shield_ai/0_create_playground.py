@@ -14,17 +14,33 @@ aws = get_aws_manager_instance()
 
 aws.reset_all()
 
+import time
 
-playground = Playground(
-    total_num_users=10,
-    total_num_roles=10,
-    total_num_groups=5,
-    total_num_resources=2,
-    path_length=[3,5],
+# Sleep for 3 seconds
+time.sleep(3)
+
+
+
+
+playground_small = Playground(
+    total_num_users=3,
+    total_num_roles=2,
+    total_num_groups=1,
+    total_num_resources=1,
+    path_length=[2,3],
 )
 
-playground.run()
-print(playground.generate_report())
+
+# playground = Playground(
+#     total_num_users=10,
+#     total_num_roles=10,
+#     total_num_groups=5,
+#     total_num_resources=2,
+#     path_length=[3,5],
+# )
+
+playground_small.run()
+print(playground_small.generate_report())
 with open(output_folder / "playground.txt", "w") as f:
-    f.write(playground.generate_report())
+    f.write(playground_small.generate_report())
     
